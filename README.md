@@ -1,4 +1,4 @@
 # reacthookform_reactquery
 
-yarn db
-yarn start
+- yarn db
+- yarn start
