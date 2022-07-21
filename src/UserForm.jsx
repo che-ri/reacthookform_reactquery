@@ -5,13 +5,67 @@ import RHFOption from "./RHFOption";
 import RHFSelect from "./RHFSelect";
 
 const temp = [
-    { name: "이름", rhf_name: "name", type: "text", list: [] },
-    { name: "나이", rhf_name: "age", type: "number", list: [] },
+    {
+        name: "이름",
+        rhf_name: "name",
+        type: "text",
+        rules: {
+            required: true,
+            maxLength: 5,
+        },
+        placeholder: null,
+        list: [],
+    },
+    {
+        name: "나이",
+        rhf_name: "age",
+        type: "number",
+        rules: {
+            required: true,
+            maxLength: 5,
+        },
+        placeholder: null,
+        list: [],
+    },
     {
         name: "부서",
         rhf_name: "team",
         type: "select",
+        rules: {
+            required: true,
+        },
+        placeholder: null,
         list: ["관리", "영업", "회계"],
+    },
+    {
+        name: "이메일",
+        rhf_name: "email",
+        type: "email",
+        rules: {
+            required: true,
+        },
+        placeholder: "aaa@aaa.com",
+        list: [],
+    },
+    {
+        name: "전화번호",
+        rhf_name: "phone",
+        type: "phone",
+        rules: {
+            required: true,
+        },
+        placeholder: "000-0000-0000",
+        list: [],
+    },
+    {
+        name: "등록일",
+        rhf_name: "date",
+        type: "date",
+        rules: {
+            required: true,
+        },
+        placeholder: "0000-00-00",
+        list: [],
     },
 ];
 
@@ -32,7 +86,7 @@ export default function UserForm({ register, handleSubmit, handleAdd }) {
 }
 
 function FormRow({ temp, register }) {
-    const { name, rhf_name, type, list } = temp;
+    const { name, rhf_name, type, list, rules, placeholder } = temp;
 
     if (type === "select")
         return (
@@ -42,6 +96,8 @@ function FormRow({ temp, register }) {
                     className="w-full"
                     register={register}
                     name={rhf_name}
+                    rules={rules}
+                    autoFocus
                 >
                     {list.map((d) => (
                         <RHFOption key={`option-${d}`}>{d}</RHFOption>
@@ -57,6 +113,9 @@ function FormRow({ temp, register }) {
                 className="border-b border-solid border-black ml-[10px]"
                 register={register}
                 name={rhf_name}
+                rules={rules}
+                type={type}
+                placeholder={placeholder}
                 autoFocus
             />
         </div>

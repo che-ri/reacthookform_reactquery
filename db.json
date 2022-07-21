@@ -1,22 +1,3 @@
 {
-  "teletubbies": [
-    {
-      "name": "보라돌이",
-      "age": "10",
-      "team": "관리",
-      "id": 1
-    },
-    {
-      "name": "뚜비",
-      "age": "10",
-      "team": "회계",
-      "id": 2
-    },
-    {
-      "name": "",
-      "age": "10",
-      "team": "영업",
-      "id": 3
-    }
-  ]
+  "teletubbies": []
 }

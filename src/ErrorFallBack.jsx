@@ -5,13 +5,13 @@ export default function ErrorFallBack({ error, resetErrorBoundary }) {
     return (
         <Layout>
             <h1 className="text-[48px]">에러가 발생했습니다.</h1>
-            <table className="border border-black">
-                <thead>
+            <table className="border border-black mt-[20px]">
+                <thead className="bg-black text-white">
                     <tr>
                         <th>Error Log</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="h-[50px]">
                     <tr>
                         <td>{error.message}</td>
                     </tr>
