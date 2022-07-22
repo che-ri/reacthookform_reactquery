@@ -1,5 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import RHFForm from "./RHFForm";
+import RHFInput from "./RHFInput";
+import RHFOption from "./RHFOption";
+import RHFSelect from "./RHFSelect";
 
 export default function List({ data, handleEdit, handleDel }) {
     return (
@@ -44,34 +48,35 @@ function Row({ data, handleEdit, handleDel }) {
     return (
         <>
             {is_edit ? (
-                <form
+                <RHFForm
                     onSubmit={handleSubmit(edit)}
                     className="grid grid-cols-4  gap-x-[20px] bg-[#f1f1f1] px-[20px] py-[10px] border-b border-[#d9d9d9] border-solid border-black"
                 >
-                    <input
+                    <RHFInput
                         className="border-b border-solid border-black bg-transparent"
-                        {...register("name")}
+                        register={register}
                         name="name"
                         autoFocus
                         defaultValue={data.name}
                     />
-                    <input
+                    <RHFInput
                         className="border-b border-solid border-black bg-transparent"
-                        {...register("age")}
+                        register={register}
                         type="number"
                         name="age"
                         defaultValue={data.age}
                         autoFocus
                     />
-                    <select
+                    <RHFSelect
                         className="w-full bg-transparent"
+                        register={register}
                         defaultValue={data.team}
-                        {...register("team")}
+                        name="team"
                     >
                         {["관리", "영업", "회계"].map((d) => (
-                            <option key={`option-${d}`}>{d}</option>
+                            <RHFOption key={`option-${d}`}>{d}</RHFOption>
                         ))}
-                    </select>
+                    </RHFSelect>
                     <div className="flex gap-[10px]">
                         <button
                             className="bg-black text-white w-full p-[10px] rounded"
@@ -86,7 +91,7 @@ function Row({ data, handleEdit, handleDel }) {
                             취소
                         </button>
                     </div>
-                </form>
+                </RHFForm>
             ) : (
                 <div className="grid grid-cols-4 gap-x-[20px] bg-[#f1f1f1] px-[20px] py-[10px] border-b border-[#d9d9d9] border-solid border-black">
                     <span>{data.name}</span>
