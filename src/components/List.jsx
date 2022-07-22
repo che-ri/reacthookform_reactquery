@@ -17,21 +17,25 @@ export default function List({ data, handleEdit, handleDel }) {
     ];
 
     return (
-        <div className=" w-full">
-            <h1 className="text-[30px] font-bold mb-[10px]">사원 리스트</h1>
+        <div className=" w-full relative">
+            <h1 className="text-[30px] font-bold mb-[10px]bg-white w-full">
+                사원 리스트
+            </h1>
             <div className="grid grid-cols-7 gap-[20px] px-[20px] py-[10px] bg-black text-white">
                 {header_temp.map((d) => (
                     <span key={`option-${d}`}>{d}</span>
                 ))}
             </div>
-            {data?.data?.map((d, idx) => (
-                <Row
-                    key={`list-${d.id}`}
-                    data={d}
-                    handleEdit={handleEdit}
-                    handleDel={handleDel}
-                />
-            ))}
+            <div className="overflow-auto max-h-[50%]">
+                {data?.data?.map((d, idx) => (
+                    <Row
+                        key={`list-${d.id}`}
+                        data={d}
+                        handleEdit={handleEdit}
+                        handleDel={handleDel}
+                    />
+                ))}
+            </div>
         </div>
     );
 }

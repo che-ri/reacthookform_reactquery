@@ -9,7 +9,7 @@ export default function ErrorComponent({ button_text = "" }) {
     return (
         <div className="flex justify-start w-full mb-[50px]">
             <button
-                className="bg-black px-[10px] py-[5px] text-white"
+                className="bg-black px-[10px] py-[5px] text-white rounded"
                 onClick={onClickError}
             >
                 {button_text}

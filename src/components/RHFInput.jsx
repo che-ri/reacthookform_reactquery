@@ -10,6 +10,7 @@ export default function RHFInput({
 }) {
     let rules = {
         ..._rules,
+        onChange,
         // validate: (value) => value > 0,  validate 규칙도 필요하면 넣으면 좋을듯
     };
 
@@ -19,6 +20,7 @@ export default function RHFInput({
             break;
         case "number":
             rules = { ...rules, pattern: /^(0|[1-9]\d*)(\.\d+)?$/ };
+
             break;
 
         case "phone":

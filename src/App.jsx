@@ -9,27 +9,27 @@ import ErrorFallBack from "./components/ErrorFallBack";
 import Layout from "./components/Layout";
 import Loader from "./components/Loader";
 import ErrorComponent from "./components/ErrorComponent";
-import CalculatorShowButton from "./components/CalculatorAddButton";
-import CalculatorModal from "./components/CalculatorModal";
+import ShopOpenButton from "./components/ShopOpenButton";
+import ShopModal from "./components/ShopModal";
 const Home = React.lazy(() => import("./Home"));
 
 export default function App() {
     const { reset } = useQueryErrorResetBoundary();
-    const [calculator_open, setCalculatorOpen] = React.useState(false);
+    const [calculator_open, setShopOpen] = React.useState(false);
 
-    function closeCalculator() {
-        setCalculatorOpen(false);
+    function closeShop() {
+        setShopOpen(false);
     }
 
-    function showCalculator() {
-        setCalculatorOpen(true);
+    function showShop() {
+        setShopOpen(true);
     }
     return (
         <React.Suspense fallback={<SuspenseFallBack />}>
             <ErrorBoundary FallbackComponent={ErrorFallBack}>
                 <Layout>
                     <div className="absolute right-[0px] flex gap-[20px] w-max h-max">
-                        <CalculatorShowButton showCalculator={showCalculator} />
+                        <ShopOpenButton showShop={showShop} />
                         <ErrorComponent button_text="Root 에러발생버튼" />
                     </div>
                     <React.Suspense
@@ -49,10 +49,7 @@ export default function App() {
                         </ErrorBoundary>
                     </React.Suspense>
                 </Layout>
-                <CalculatorModal
-                    is_open={calculator_open}
-                    closeModal={closeCalculator}
-                />
+                <ShopModal is_open={calculator_open} closeModal={closeShop} />
             </ErrorBoundary>
         </React.Suspense>
     );
