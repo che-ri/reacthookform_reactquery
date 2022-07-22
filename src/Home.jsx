@@ -25,8 +25,8 @@ export default function Home() {
     const { register, handleSubmit } = useForm();
 
     const _addEmp = useMutation(postEmp, {
-        onMutate: ({ name, age, team }) => {
-            return { name, age, team };
+        onMutate: ({ name, age, team, email, phone, date }) => {
+            return { name, age, team, email, phone, date };
         },
         onSuccess: () => {
             queryClient.invalidateQueries("emp");
@@ -43,19 +43,19 @@ export default function Home() {
     });
 
     const _editEmp = useMutation(editEmp, {
-        onMutate: ({ id, name, age, team }) => {
-            return { id, name, age, team };
+        onMutate: ({ id, name, age, team, email, phone, date }) => {
+            return { id, name, age, team, email, phone, date };
         },
         onSuccess: () => {
             queryClient.invalidateQueries("emp");
         },
     });
 
-    function handleAdd({ name, age, team }) {
-        _addEmp.mutate({ name, age, team });
+    function handleAdd({ name, age, team, email, phone, date }) {
+        _addEmp.mutate({ name, age, team, email, phone, date });
     }
-    function handleEdit({ id, name, age, team }) {
-        _editEmp.mutate({ id, name, team, age });
+    function handleEdit({ id, name, age, team, email, phone, date }) {
+        _editEmp.mutate({ id, name, team, age, email, phone, date });
     }
 
     function handleDel(id) {
