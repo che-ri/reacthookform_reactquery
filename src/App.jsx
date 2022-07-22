@@ -3,9 +3,9 @@ import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
 //components
-import SuspenseFallBack from "./SuspenseFallBack";
-import ErrorFallBack from "./ErrorFallBack";
-import Layout from "./Layout";
+import SuspenseFallBack from "./components/SuspenseFallBack";
+import ErrorFallBack from "./components/ErrorFallBack";
+import Layout from "./components/Layout";
 const Home = React.lazy(() => import("./Home"));
 
 export default function App() {

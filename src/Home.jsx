@@ -7,13 +7,14 @@ import {
     useQueryErrorResetBoundary,
 } from "react-query";
 import { delEmp, editEmp, getEmp, postEmp } from "./api";
-
-import UserForm from "./UserForm";
-import List from "./List";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallBack from "./ErrorFallBack";
-import ErrorComponent from "./ErrorComponent";
-import Loader from "./Loader";
+
+//components
+import UserForm from "./components/UserForm";
+import List from "./components/List";
+import ErrorFallBack from "./components/ErrorFallBack";
+import ErrorComponent from "./components/ErrorComponent";
+import Loader from "./components/Loader";
 
 export default function Home() {
     const { reset } = useQueryErrorResetBoundary();
