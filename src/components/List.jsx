@@ -17,7 +17,7 @@ export default function List({ data, handleEdit, handleDel }) {
     ];
 
     return (
-        <div className="max-h-[40%] overflow-auto w-full">
+        <div className=" w-full">
             <h1 className="text-[30px] font-bold mb-[10px]">사원 리스트</h1>
             <div className="grid grid-cols-7 gap-[20px] px-[20px] py-[10px] bg-black text-white">
                 {header_temp.map((d) => (

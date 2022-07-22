@@ -26,3 +26,8 @@ table th,
 table td {
     border: 1px solid black;
 }
+
+.stop-scroll {
+    height: 100%;
+    overflow: hidden;
+}
