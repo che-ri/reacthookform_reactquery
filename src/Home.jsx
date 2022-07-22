@@ -1,23 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import {
-    useQuery,
-    useMutation,
-    useQueryClient,
-    useQueryErrorResetBoundary,
-} from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import { delEmp, editEmp, getEmp, postEmp } from "./api";
-import { ErrorBoundary } from "react-error-boundary";
 
 //components
 import UserForm from "./components/UserForm";
 import List from "./components/List";
-import ErrorFallBack from "./components/ErrorFallBack";
 import ErrorComponent from "./components/ErrorComponent";
-import Loader from "./components/Loader";
 
 export default function Home() {
-    const { reset } = useQueryErrorResetBoundary();
     const queryClient = useQueryClient();
     const { data } = useQuery("emp", getEmp, {
         suspense: true,
@@ -65,35 +56,14 @@ export default function Home() {
 
     return (
         <div className="w-full h-full flex flex-col items-center">
-            <ErrorComponent />
+            <ErrorComponent button_text="Home 에러발생버튼" />
             <UserForm
                 register={register}
                 handleSubmit={handleSubmit}
                 handleAdd={handleAdd}
             />
-            <React.Suspense
-                fallback={
-                    <Loader
-                        type="react-query"
-                        text="사원리스트를 불러오는 중입니다."
-                    />
-                }
-            >
-                <ErrorBoundary
-                    onReset={reset}
-                    fallbackRender={({ resetErrorBoundary }) => (
-                        <ErrorFallBack
-                            resetErrorBoundary={resetErrorBoundary}
-                        />
-                    )}
-                >
-                    <List
-                        data={data}
-                        handleEdit={handleEdit}
-                        handleDel={handleDel}
-                    />
-                </ErrorBoundary>
-            </React.Suspense>
+
+            <List data={data} handleEdit={handleEdit} handleDel={handleDel} />
         </div>
     );
 }

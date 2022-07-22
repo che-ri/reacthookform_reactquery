@@ -1,7 +1,7 @@
 import React from "react";
 import Bomb from "./Bomb";
 
-export default function ErrorComponent() {
+export default function ErrorComponent({ button_text = "" }) {
     const [error, setError] = React.useState(false);
     function onClickError() {
         setError(!error);
@@ -12,7 +12,7 @@ export default function ErrorComponent() {
                 className="bg-black px-[10px] py-[5px] text-white"
                 onClick={onClickError}
             >
-                에러 발생
+                {button_text}
             </button>
             {error && <Bomb />}
         </div>
