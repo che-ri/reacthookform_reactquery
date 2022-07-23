@@ -15,7 +15,7 @@ const Home = React.lazy(() => import("./Home"));
 
 export default function App() {
     const { reset } = useQueryErrorResetBoundary();
-    const [calculator_open, setShopOpen] = React.useState(false);
+    const [shop_open, setShopOpen] = React.useState(false);
 
     function closeShop() {
         setShopOpen(false);
@@ -49,7 +49,7 @@ export default function App() {
                         </ErrorBoundary>
                     </React.Suspense>
                 </Layout>
-                <ShopModal is_open={calculator_open} closeModal={closeShop} />
+                <ShopModal is_open={shop_open} closeModal={closeShop} />
             </ErrorBoundary>
         </React.Suspense>
     );

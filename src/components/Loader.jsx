@@ -5,12 +5,7 @@ const override = {
     margin: "0 auto",
 };
 
-export default function Loader({
-    align = "center",
-    text = "로딩 중입니다.",
-    type,
-}) {
-    console.log(type);
+export default function Loader({ align = "center", text = "로딩 중입니다." }) {
     return (
         <div
             className="flex flex-col items-center h-full text-[20px]"
