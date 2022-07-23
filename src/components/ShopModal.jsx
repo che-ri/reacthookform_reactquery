@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import ref from "../util/ref";
+
 import Modal from "./Modal";
 import RHFInput from "./RHFInput";
 
@@ -23,7 +25,7 @@ const temp = [
 
 export default function ShopModal({ is_open, closeModal }) {
     const { register } = useForm();
-    const total_price_ref = React.useRef(0);
+    ref.total_price = React.useRef(0);
     let prices = [];
 
     function onChange(data) {
@@ -44,7 +46,7 @@ export default function ShopModal({ is_open, closeModal }) {
                 p.name === name ? { name, final_price, quantity } : p
             );
 
-        total_price_ref.current.textContent = prices?.reduce(
+        ref.total_price.current.textContent = prices?.reduce(
             (acc, cur) => (acc += cur.final_price || 0),
             0
         );
@@ -63,7 +65,7 @@ export default function ShopModal({ is_open, closeModal }) {
                     합계
                 </h3>
                 <div className="text-center border border-black py-[5px] px-[10px]">
-                    <span ref={total_price_ref}>0</span>
+                    <span ref={ref.total_price}>0</span>
                     <span className="ml-[5px]">원</span>
                 </div>
             </div>
