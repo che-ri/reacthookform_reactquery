@@ -23,33 +23,32 @@ const temp = [
 
 export default function ShopModal({ is_open, closeModal }) {
     const { register } = useForm();
-    const [prices, setPrices] = React.useState([]);
+    const total_price_ref = React.useRef(0);
+    let prices = [];
 
     function onChange(data) {
         const name = data.target.name;
         const quantity = Number(data.target.value);
         const target_price = temp.find((t) => t.rhf_name === name).price;
         const final_price = target_price * quantity;
+        const find_idx = prices.findIndex((p) => p.name === name);
 
-        if (quantity === 0) {
-            setPrices(prices.filter((p) => p.name !== name));
-        } else {
-            const find_idx = prices.findIndex((p) => p.name === name);
-            if (find_idx === -1) {
-                setPrices([...prices, { name, final_price, quantity }]);
-            } else {
-                const result = prices.map((p) =>
-                    p.name === name ? { name, final_price, quantity } : p
-                );
-                setPrices(result);
-            }
-        }
+        //삭제
+        if (quantity === 0) prices = prices.filter((p) => p.name !== name);
+        //추가
+        else if (quantity !== 0 && find_idx === -1)
+            prices = [...prices, { name, final_price, quantity }];
+        //수정
+        else
+            prices = prices.map((p) =>
+                p.name === name ? { name, final_price, quantity } : p
+            );
+
+        total_price_ref.current.textContent = prices?.reduce(
+            (acc, cur) => (acc += cur.final_price || 0),
+            0
+        );
     }
-
-    const total_price = prices?.reduce(
-        (acc, cur) => (acc += cur.final_price || 0),
-        0
-    );
 
     return (
         <Modal is_open={is_open} closeModal={closeModal}>
@@ -63,9 +62,10 @@ export default function ShopModal({ is_open, closeModal }) {
                 <h3 className="text-center bg-black text-white py-[5px] px-[10px">
                     합계
                 </h3>
-                <p className="text-center border border-black py-[5px] px-[10px]">
-                    {total_price.toLocaleString()} 원
-                </p>
+                <div className="text-center border border-black py-[5px] px-[10px]">
+                    <span ref={total_price_ref}>0</span>
+                    <span className="ml-[5px]">원</span>
+                </div>
             </div>
         </Modal>
     );
