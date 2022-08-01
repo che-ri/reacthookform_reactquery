@@ -57,7 +57,12 @@ export default function ShopModal({ is_open, closeModal }) {
             <h1 className="text-center text-[30px] mb-[20px]">Shop</h1>
             <div className="grid grid-cols-3 gap-[10px]">
                 {temp.map((t) => (
-                    <ShopBox {...t} register={register} onChange={onChange} />
+                    <ShopBox
+                        key={`box-${t.name}`}
+                        {...t}
+                        register={register}
+                        onChange={onChange}
+                    />
                 ))}
             </div>
             <div className="mt-[30px]">
