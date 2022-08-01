@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "../../shared/Button";
 import RHFForm from "../../shared/RHFForm";
 import RHFInput from "../../shared/RHFInput";
 import RHFOption from "../../shared/RHFOption";
@@ -21,7 +22,7 @@ export default function List({ data, handleEdit, handleDel }) {
             <h1 className="text-[30px] font-bold mb-[10px]bg-white w-full">
                 사원 리스트
             </h1>
-            <div className="grid grid-cols-7 gap-[20px] px-[20px] py-[10px] bg-black text-white">
+            <div className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] gap-[20px] px-[20px] py-[10px] bg-black text-white">
                 {header_temp.map((d) => (
                     <span key={`option-${d}`}>{d}</span>
                 ))}
@@ -136,51 +137,39 @@ function Row({ data, handleEdit, handleDel }) {
             {is_edit ? (
                 <RHFForm
                     onSubmit={handleSubmit(edit)}
-                    className="grid grid-cols-7  gap-x-[20px] bg-[#f1f1f1] px-[20px] py-[10px] border-b border-[#d9d9d9] border-solid border-black"
+                    className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] items-center gap-x-[20px] bg-[#f1f1f1] px-[20px] py-[10px] border-b border-[#d9d9d9] border-solid border-black"
                 >
-                    {temp.map((t) => (
+                    {temp.map((t, i) => (
                         <FormRow temp={t} register={register} />
                     ))}
                     <div className="flex gap-[10px]">
-                        <button
-                            className="bg-black text-white w-full p-[10px] rounded"
-                            onClick={handleSubmit(edit)}
-                        >
-                            수정
-                        </button>
-                        <button
-                            className="bg-black text-white w-full p-[10px] rounded"
-                            onClick={handleCancel}
-                        >
-                            취소
-                        </button>
+                        <Button onClick={handleSubmit(edit)}>수정</Button>
+                        <Button onClick={handleCancel}>취소</Button>
                     </div>
                 </RHFForm>
             ) : (
-                <div className="grid grid-cols-7 gap-x-[20px] bg-[#f1f1f1] px-[20px] py-[10px] border-b border-[#d9d9d9] border-solid border-black">
+                <div className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] items-center gap-x-[20px] bg-[#f1f1f1] px-[20px] py-[10px] border-b border-[#d9d9d9] border-solid border-black">
                     <span>{data.name}</span>
                     <span>{data.age}</span>
                     <span>{data.team}</span>
                     <span>{data.email}</span>
                     <span>{data.phone}</span>
                     <span>{data.date}</span>
-                    <div className="w-full flex justify-center items-center gap-[10px] ">
-                        <button
-                            className="bg-black text-white rounded px-[10px] h-max"
+                    <div className="flex gap-[10px] ">
+                        <Button
                             onClick={() => {
                                 clickEditBtn();
                             }}
                         >
                             수정
-                        </button>
-                        <button
-                            className="bg-black text-white rounded px-[10px] h-max"
+                        </Button>
+                        <Button
                             onClick={() => {
                                 handleDel(data.id);
                             }}
                         >
                             삭제
-                        </button>
+                        </Button>
                     </div>
                 </div>
             )}
@@ -188,7 +177,7 @@ function Row({ data, handleEdit, handleDel }) {
     );
 }
 
-function FormRow({ temp, register }) {
+function FormRow({ temp, register, style }) {
     const { rhf_name, type, list, rules, placeholder, defaultValue } = temp;
 
     if (type === "select")
@@ -209,7 +198,8 @@ function FormRow({ temp, register }) {
 
     return (
         <RHFInput
-            className="border-b border-solid border-black ml-[10px]"
+            className="border-b border-solid border-black w-full"
+            style={style}
             register={register}
             name={rhf_name}
             rules={rules}
