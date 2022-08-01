@@ -31,7 +31,6 @@ export default function App() {
                             <ShopOpenButton showShop={showShop} />
                             <ErrorComponent button_text="Root 에러발생버튼" />
                         </div>
-
                         <Router />
                     </Layout>
                     <ShopModal is_open={shop_open} closeModal={closeShop} />
