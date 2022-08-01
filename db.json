@@ -1,13 +1,22 @@
 {
-    "workers_list": [
-        {
-            "name": "셰리",
-            "age": "9",
-            "team": "관리",
-            "email": "aaa@aaa.com",
-            "phone": "000-0000-0000",
-            "date": "2000-01-01",
-            "id": 1
-        }
-    ]
+  "workers_list": [
+    {
+      "name": "셰리",
+      "age": "9",
+      "team": "관리",
+      "email": "aaa@aaa.com",
+      "phone": "000-0000-0000",
+      "date": "2000-01-01",
+      "id": 1
+    },
+    {
+      "name": "nana",
+      "age": "22",
+      "team": "관리",
+      "email": "aaa@aaa.com",
+      "phone": "010-0000-0000",
+      "date": "2020-11-11",
+      "id": 2
+    }
+  ]
 }

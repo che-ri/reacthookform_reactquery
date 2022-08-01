@@ -1,8 +1,8 @@
 import React from "react";
-import RHFForm from "./RHFForm";
-import RHFInput from "./RHFInput";
-import RHFOption from "./RHFOption";
-import RHFSelect from "./RHFSelect";
+import RHFForm from "../shared/RHFForm";
+import RHFInput from "../shared/RHFInput";
+import RHFOption from "../shared/RHFOption";
+import RHFSelect from "../shared/RHFSelect";
 
 const temp = [
     {

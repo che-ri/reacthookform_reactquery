@@ -2,8 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import ref from "../util/ref";
 
-import Modal from "./Modal";
-import RHFInput from "./RHFInput";
+import Modal from "../shared/Modal";
+import RHFInput from "../shared/RHFInput";
 
 const temp = [
     { name: "펜", rhf_name: "pen", type: "number", unit: "개", price: 1000 },

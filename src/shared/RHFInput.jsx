@@ -20,9 +20,7 @@ export default function RHFInput({
             break;
         case "number":
             rules = { ...rules, pattern: /^(0|[1-9]\d*)(\.\d+)?$/ };
-
             break;
-
         case "phone":
             rules = {
                 ...rules,
@@ -41,6 +39,7 @@ export default function RHFInput({
                 ...rules,
                 pattern: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
             };
+            break;
         default:
             rules = { ...rules };
     }

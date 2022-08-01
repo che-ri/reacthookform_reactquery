@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import RHFForm from "./RHFForm";
-import RHFInput from "./RHFInput";
-import RHFOption from "./RHFOption";
-import RHFSelect from "./RHFSelect";
+import RHFForm from "../../shared/RHFForm";
+import RHFInput from "../../shared/RHFInput";
+import RHFOption from "../../shared/RHFOption";
+import RHFSelect from "../../shared/RHFSelect";
 
 export default function List({ data, handleEdit, handleDel }) {
     const header_temp = [
