@@ -2,6 +2,9 @@ import React from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { delEmp, editEmp, getEmp } from "../../api";
+
+//components
+import Button from "../../shared/Button";
 import ErrorComponent from "../../shared/ErrorComponent";
 import List from "./List";
 
@@ -45,14 +48,9 @@ export default function Index() {
 
     return (
         <div className="w-full h-full flex flex-col items-center">
-            <ErrorComponent button_text="Home 에러발생버튼" />
-            <div className="flex w-full justify-end">
-                <button
-                    onClick={goWritePage}
-                    className="h-max w-max bg-black text-white py-[5px] px-[10px] rounded"
-                >
-                    사원 추가
-                </button>
+            <div className="flex gap-[10px] w-full justify-end">
+                <ErrorComponent button_text="Home 에러발생버튼" />
+                <Button onClick={goWritePage}>사원 추가</Button>
             </div>
             <List data={data} handleEdit={handleEdit} handleDel={handleDel} />
         </div>

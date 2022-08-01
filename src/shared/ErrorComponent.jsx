@@ -1,5 +1,6 @@
 import React from "react";
 import Bomb from "./Bomb";
+import Button from "./Button";
 
 export default function ErrorComponent({ button_text = "" }) {
     const [error, setError] = React.useState(false);
@@ -7,13 +8,13 @@ export default function ErrorComponent({ button_text = "" }) {
         setError(!error);
     }
     return (
-        <div className="flex justify-start w-full mb-[50px]">
-            <button
+        <div>
+            <Button
                 className="bg-black px-[10px] py-[5px] text-white rounded"
                 onClick={onClickError}
             >
                 {button_text}
-            </button>
+            </Button>
             {error && <Bomb />}
         </div>
     );
