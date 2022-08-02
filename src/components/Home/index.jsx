@@ -7,6 +7,7 @@ import { delEmp, editEmp, getEmp } from "../../api";
 import Button from "../../shared/Button";
 import ErrorComponent from "../../shared/ErrorComponent";
 import List from "./List";
+import Pagename from "../../shared/Pagename";
 
 export default function Index() {
     const queryClient = useQueryClient();
@@ -48,9 +49,12 @@ export default function Index() {
 
     return (
         <div className="w-full h-full flex flex-col items-center">
-            <div className="flex gap-[10px] w-full justify-end">
-                <ErrorComponent button_text="Home 에러발생버튼" />
-                <Button onClick={goWritePage}>사원 추가</Button>
+            <div className="flex w-full justify-between">
+                <Pagename>Home</Pagename>
+                <div className="flex gap-[10px]">
+                    <ErrorComponent button_text="Home 에러발생버튼" />
+                    <Button onClick={goWritePage}>사원 추가</Button>
+                </div>
             </div>
             <List data={data} handleEdit={handleEdit} handleDel={handleDel} />
         </div>

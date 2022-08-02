@@ -6,6 +6,7 @@ import { postEmp } from "../api";
 
 //components
 import UserForm from "../components/UserForm";
+import Pagename from "../shared/Pagename";
 
 export default function WorkerWrite() {
     const queryClient = useQueryClient();
@@ -27,6 +28,7 @@ export default function WorkerWrite() {
     }
     return (
         <div>
+            <Pagename>사원 추가</Pagename>
             <UserForm
                 register={register}
                 handleSubmit={handleSubmit}
