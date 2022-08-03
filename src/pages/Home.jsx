@@ -44,7 +44,7 @@ export default function Home() {
     }
 
     return (
-        <Container className="bg-[#313955]">
+        <Container className="bg-navy">
             <Wrapper>
                 <div className="relative flex items-center h-full w-full overflow-hidden">
                     <div className="h-[250px]">

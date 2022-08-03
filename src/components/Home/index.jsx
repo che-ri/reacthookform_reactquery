@@ -8,6 +8,8 @@ import Button from "../../shared/Button";
 import ErrorComponent from "../../shared/ErrorComponent";
 import List from "./List";
 import Pagename from "../../shared/Pagename";
+import Wrapper from "../../shared/Wrapper";
+import Container from "../../shared/Container";
 
 export default function Index() {
     const queryClient = useQueryClient();
@@ -48,14 +50,21 @@ export default function Index() {
     }
 
     return (
-        <div className="w-full h-full flex flex-col items-center">
-            <div className="flex w-full justify-between">
-                <div className="flex gap-[10px]">
-                    <ErrorComponent button_text="Home 에러발생버튼" />
-                    <Button onClick={goWritePage}>사원 추가</Button>
-                </div>
-            </div>
-            <List data={data} handleEdit={handleEdit} handleDel={handleDel} />
-        </div>
+        <Container>
+            <Wrapper>
+                {/* <div className="flex w-full justify-between">
+                    <div className="flex gap-[10px]">
+                        <ErrorComponent button_text="Home 에러발생버튼" />
+                        <Button onClick={goWritePage}>사원 추가</Button>
+                    </div>
+                </div> */}
+                <Pagename>사원 목록</Pagename>
+                <List
+                    data={data}
+                    handleEdit={handleEdit}
+                    handleDel={handleDel}
+                />
+            </Wrapper>
+        </Container>
     );
 }

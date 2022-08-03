@@ -19,9 +19,6 @@ export default function List({ data, handleEdit, handleDel }) {
 
     return (
         <div className=" w-full relative">
-            <h1 className="text-[30px] font-bold mb-[10px]bg-white w-full">
-                사원 리스트
-            </h1>
             <div className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] gap-[20px] px-[20px] py-[10px] bg-black text-white">
                 {header_temp.map((d) => (
                     <span key={`option-${d}`}>{d}</span>
@@ -137,7 +134,7 @@ function Row({ data, handleEdit, handleDel }) {
             {is_edit ? (
                 <RHFForm
                     onSubmit={handleSubmit(edit)}
-                    className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] items-center gap-x-[20px] bg-[#f1f1f1] px-[20px] py-[10px] border-b border-[#d9d9d9] border-solid border-black"
+                    className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] items-center gap-x-[20px] bg-white px-[20px] py-[10px] border-b border-gray border-solid border-black"
                 >
                     {temp.map((t, i) => (
                         <FormRow temp={t} register={register} />
@@ -148,7 +145,7 @@ function Row({ data, handleEdit, handleDel }) {
                     </div>
                 </RHFForm>
             ) : (
-                <div className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] items-center gap-x-[20px] bg-[#f1f1f1] px-[20px] py-[10px] border-b border-[#d9d9d9] border-solid border-black">
+                <div className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] items-center gap-x-[20px] bg-white px-[20px] py-[10px] border-b border-gray border-solid border-black">
                     <span>{data.name}</span>
                     <span>{data.age}</span>
                     <span>{data.team}</span>
