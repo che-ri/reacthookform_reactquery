@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import NotFound from "./shared/NotFound";
 
 //route
 const Home = React.lazy(() => import("./pages/Home"));
@@ -16,6 +17,7 @@ export default function AppRouter() {
                 <Route path="write/:id" element={<WorkerWrite />} />
                 <Route path="detail/:id" element={<WorkerDetail />} />
             </Route>
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }
