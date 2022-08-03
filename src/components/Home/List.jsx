@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Button from "../../shared/Button";
 import RHFForm from "../../shared/RHFForm";
 import RHFInput from "../../shared/RHFInput";
@@ -39,6 +40,7 @@ export default function List({ data, handleEdit, handleDel }) {
 }
 
 function Row({ data, handleEdit, handleDel }) {
+    const navigate = useNavigate();
     const [is_edit, setIsEdit] = React.useState(false);
     const { register, handleSubmit, reset } = useForm();
 
@@ -129,8 +131,12 @@ function Row({ data, handleEdit, handleDel }) {
         setIsEdit(false);
     }
 
+    function goDetail(id) {
+        navigate(`/worker/detail/${id}`);
+    }
+
     return (
-        <>
+        <div className="cursor-pointer" onClick={() => goDetail(data.id)}>
             {is_edit ? (
                 <RHFForm
                     onSubmit={handleSubmit(edit)}
@@ -170,7 +176,7 @@ function Row({ data, handleEdit, handleDel }) {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 }
 
