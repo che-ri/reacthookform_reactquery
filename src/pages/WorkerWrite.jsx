@@ -36,7 +36,7 @@ export default function WorkerWrite() {
 
     return (
         <Container>
-            <Wrapper>
+            <Wrapper className="h-[calc(100%-50px)]">
                 <Pagename
                     className="flex justify-between items-center"
                     name="사원정보 작성"

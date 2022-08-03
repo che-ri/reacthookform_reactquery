@@ -9,7 +9,7 @@ export default function Index() {
 
     return (
         <Container>
-            <Wrapper>
+            <Wrapper className="h-[calc(100%-50px)]">
                 <Pagename name="사원 정보" />
                 <WorkerTable data={data} />
             </Wrapper>

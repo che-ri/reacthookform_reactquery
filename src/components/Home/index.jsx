@@ -5,7 +5,6 @@ import { delEmp, editEmp, getEmp } from "../../api";
 
 //components
 import Button from "../../shared/Button";
-import ErrorComponent from "../../shared/ErrorComponent";
 import List from "./List";
 import Pagename from "../../shared/Pagename";
 import Wrapper from "../../shared/Wrapper";
@@ -51,12 +50,7 @@ export default function Index() {
 
     return (
         <Container>
-            <Wrapper>
-                {/* <div className="flex w-full justify-between">
-                    <div className="flex gap-[10px]">
-                        <ErrorComponent button_text="Home 에러발생버튼" />
-                    </div>
-                </div> */}
+            <Wrapper className="h-[calc(100%-50px)]">
                 <Pagename
                     className="flex justify-between items-center"
                     name="사원 목록"
