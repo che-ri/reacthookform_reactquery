@@ -19,7 +19,7 @@ export default function List({ data, handleEdit, handleDel }) {
     ];
 
     return (
-        <div className=" w-full relative">
+        <div className=" w-full relative h-[70%] max-h-[70%] overflow-auto">
             <div className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] gap-[20px] px-[20px] py-[10px] bg-black text-white">
                 {header_temp.map((d) => (
                     <span key={`option-${d}`}>{d}</span>
@@ -136,7 +136,10 @@ function Row({ data, handleEdit, handleDel }) {
     }
 
     return (
-        <div className="cursor-pointer" onClick={() => goDetail(data.id)}>
+        <div
+            className="cursor-pointer hover:bg-gray-light"
+            onClick={() => goDetail(data.id)}
+        >
             {is_edit ? (
                 <RHFForm
                     onSubmit={handleSubmit(edit)}
@@ -146,12 +149,26 @@ function Row({ data, handleEdit, handleDel }) {
                         <FormRow temp={t} register={register} />
                     ))}
                     <div className="flex gap-[10px]">
-                        <Button onClick={handleSubmit(edit)}>수정</Button>
-                        <Button onClick={handleCancel}>취소</Button>
+                        <Button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleSubmit(edit);
+                            }}
+                        >
+                            수정
+                        </Button>
+                        <Button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleCancel();
+                            }}
+                        >
+                            취소
+                        </Button>
                     </div>
                 </RHFForm>
             ) : (
-                <div className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] items-center gap-x-[20px] bg-white px-[20px] py-[10px] border-b border-gray border-solid border-black">
+                <div className="grid grid-cols-[1fr_1fr_1fr_2fr_2fr_2fr_2fr] items-center gap-x-[20px] px-[20px] py-[10px] border-b border-gray border-solid border-black">
                     <span>{data.name}</span>
                     <span>{data.age}</span>
                     <span>{data.team}</span>
@@ -160,14 +177,16 @@ function Row({ data, handleEdit, handleDel }) {
                     <span>{data.date}</span>
                     <div className="flex gap-[10px] ">
                         <Button
-                            onClick={() => {
+                            onClick={(e) => {
+                                e.stopPropagation();
                                 clickEditBtn();
                             }}
                         >
                             수정
                         </Button>
                         <Button
-                            onClick={() => {
+                            onClick={(e) => {
+                                e.stopPropagation();
                                 handleDel(data.id);
                             }}
                         >
