@@ -1,10 +1,14 @@
 import React from "react";
-import Layout from "../shared/Layout";
 
-export default function ErrorFallBack({ error, resetErrorBoundary }) {
+//components
+import Wrapper from "../shared/Wrapper";
+import Button from "../shared/Button";
+import Pagename from "./Pagename";
+
+export default function ErrorFallBack({ error, error_info, reset }) {
     return (
-        <Layout>
-            <h1 className="text-[48px]">에러가 발생했습니다.</h1>
+        <Wrapper>
+            <Pagename>에러가 발생했습니다.</Pagename>
             <table className="border border-black mt-[20px]">
                 <thead className="bg-black text-white">
                     <tr>
@@ -15,14 +19,17 @@ export default function ErrorFallBack({ error, resetErrorBoundary }) {
                     <tr>
                         <td>{error.message}</td>
                     </tr>
+                    <tr>
+                        <td>{error_info.componentStack}</td>
+                    </tr>
                 </tbody>
             </table>
-            <button
+            <Button
                 className="bg-black rounded text-white px-[10px] py-[5px] mt-[20px]"
-                onClick={resetErrorBoundary}
+                onClick={reset}
             >
                 홈으로 가기
-            </button>
-        </Layout>
+            </Button>
+        </Wrapper>
     );
 }

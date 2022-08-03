@@ -27,7 +27,6 @@ export default function Home() {
         }, [1500]);
 
         const button_timer = setTimeout(() => {
-            console.log(button_ref.current.style);
             button_ref.current.style.display = "block";
         }, [2000]);
 

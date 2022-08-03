@@ -1,10 +1,8 @@
 import React from "react";
 
-import { ErrorBoundary } from "react-error-boundary";
-
 //components
 import SuspenseFallBack from "./shared/SuspenseFallBack";
-import ErrorFallBack from "./shared/ErrorFallBack";
+import ErrorBoundary from "./shared/ErrorBoundary";
 import Layout from "./shared/Layout";
 
 import Router from "./Router";
@@ -14,7 +12,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <React.Suspense fallback={<SuspenseFallBack />}>
-                <ErrorBoundary FallbackComponent={ErrorFallBack}>
+                <ErrorBoundary>
                     <Layout>
                         <Router />
                     </Layout>
