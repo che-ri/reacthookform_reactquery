@@ -1,16 +1,21 @@
 import React from "react";
 
-export default function Button({ onClick, children, style }) {
-    return (
-        <button
-            onClick={onClick}
-            style={{
-                ...style,
-                boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
-            }}
-            className="h-max w-max bg-black text-white py-[5px] px-[10px] rounded flex items-center"
-        >
-            {children}
-        </button>
-    );
-}
+const Button = React.forwardRef(
+    ({ onClick, children, style, className }, ref) => {
+        return (
+            <button
+                onClick={onClick}
+                style={{
+                    ...style,
+                    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+                }}
+                ref={ref}
+                className={`h-max w-max bg-black text-white py-[5px] px-[10px] rounded flex items-center transition-all hover:bg-blue ${className}`}
+            >
+                {children}
+            </button>
+        );
+    }
+);
+
+export default Button;

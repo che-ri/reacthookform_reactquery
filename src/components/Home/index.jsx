@@ -50,7 +50,6 @@ export default function Index() {
     return (
         <div className="w-full h-full flex flex-col items-center">
             <div className="flex w-full justify-between">
-                <Pagename>Home</Pagename>
                 <div className="flex gap-[10px]">
                     <ErrorComponent button_text="Home 에러발생버튼" />
                     <Button onClick={goWritePage}>사원 추가</Button>
