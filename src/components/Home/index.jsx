@@ -46,19 +46,25 @@ export default function Index() {
     }
 
     function goWritePage() {
-        navigate("/worker/write");
+        navigate("/worker/write/add");
     }
 
     return (
         <Container>
             <Wrapper>
-                <div className="flex w-full justify-between">
+                {/* <div className="flex w-full justify-between">
                     <div className="flex gap-[10px]">
                         <ErrorComponent button_text="Home 에러발생버튼" />
-                        <Button onClick={goWritePage}>사원 추가</Button>
                     </div>
-                </div>
-                <Pagename>사원 목록</Pagename>
+                </div> */}
+                <Pagename
+                    className="flex justify-between items-center"
+                    name="사원 목록"
+                >
+                    <Button className="text-[15px]" onClick={goWritePage}>
+                        사원 추가
+                    </Button>
+                </Pagename>
                 <List
                     data={data}
                     handleEdit={handleEdit}

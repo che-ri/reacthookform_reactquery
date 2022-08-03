@@ -78,9 +78,6 @@ export default function UserForm({ register, handleSubmit, handleAdd }) {
             {temp.map((t, i) => (
                 <FormRow key={`user_form-${i}`} temp={t} register={register} />
             ))}
-            <button className="bg-black text-white w-full p-[10px] rounded">
-                입력
-            </button>
         </RHFForm>
     );
 }
@@ -91,7 +88,7 @@ function FormRow({ temp, register }) {
     if (type === "select")
         return (
             <div className="mb-[10px] grid grid-cols-[.5fr_2fr]">
-                <span>{name}</span>
+                <strong>{name}</strong>
                 <RHFSelect
                     className="w-full"
                     register={register}
@@ -108,7 +105,7 @@ function FormRow({ temp, register }) {
 
     return (
         <div className="mb-[10px] grid grid-cols-[.5fr_2fr]">
-            <span>{name}</span>
+            <strong>{name}</strong>
             <RHFInput
                 className="border-b border-solid border-black ml-[10px]"
                 register={register}
