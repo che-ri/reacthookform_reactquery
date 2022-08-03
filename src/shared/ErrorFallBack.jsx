@@ -8,8 +8,10 @@ import Pagename from "./Pagename";
 export default function ErrorFallBack({ error, error_info, reset }) {
     return (
         <Wrapper>
-            <Pagename>에러가 발생했습니다.</Pagename>
-            <p className="text-[20px]">{error.message}</p>
+            <Pagename name="에러가 발생했습니다." />
+            <p className="text-[20px]">message : {error.message}</p>
+            <p className="text-[20px]">name : {error.name}</p>
+            <p className="text-[20px]">code : {error.code}</p>
             <div className="border border-black py-[10px] px-[20px] rounded mt-[10px]">
                 <details>{error_info.componentStack}</details>
             </div>
@@ -17,7 +19,7 @@ export default function ErrorFallBack({ error, error_info, reset }) {
                 className="bg-black rounded text-white px-[10px] py-[5px] mt-[20px]"
                 onClick={reset}
             >
-                홈으로 가기
+                돌아가기
             </Button>
         </Wrapper>
     );
