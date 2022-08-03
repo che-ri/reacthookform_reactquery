@@ -9,21 +9,10 @@ export default function ErrorFallBack({ error, error_info, reset }) {
     return (
         <Wrapper>
             <Pagename>에러가 발생했습니다.</Pagename>
-            <table className="border border-black mt-[20px]">
-                <thead className="bg-black text-white">
-                    <tr>
-                        <th>Error Log</th>
-                    </tr>
-                </thead>
-                <tbody className="h-[50px]">
-                    <tr>
-                        <td>{error.message}</td>
-                    </tr>
-                    <tr>
-                        <td>{error_info.componentStack}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p className="text-[20px]">{error.message}</p>
+            <div className="border border-black py-[10px] px-[20px] rounded mt-[10px]">
+                <details>{error_info.componentStack}</details>
+            </div>
             <Button
                 className="bg-black rounded text-white px-[10px] py-[5px] mt-[20px]"
                 onClick={reset}
