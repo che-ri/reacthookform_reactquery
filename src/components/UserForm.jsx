@@ -1,5 +1,4 @@
 import React from "react";
-import RHFForm from "../shared/RHFForm";
 import RHFInput from "../shared/RHFInput";
 import RHFOption from "../shared/RHFOption";
 import RHFSelect from "../shared/RHFSelect";
@@ -69,16 +68,13 @@ const temp = [
     },
 ];
 
-export default function UserForm({ register, handleSubmit, handleAdd }) {
+export default function UserForm({ register }) {
     return (
-        <RHFForm
-            onSubmit={handleSubmit(handleAdd)}
-            className="w-full pb-[30px]"
-        >
+        <div className="w-full pb-[30px]">
             {temp.map((t, i) => (
                 <FormRow key={`user_form-${i}`} temp={t} register={register} />
             ))}
-        </RHFForm>
+        </div>
     );
 }
 

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { postEmp } from "../api";
 
 //components
+import RHFForm from "../shared/RHFForm";
 import UserForm from "../components/UserForm";
 import Button from "../shared/Button";
 import Container from "../shared/Container";
@@ -23,7 +24,7 @@ export default function WorkerWrite() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries("emp");
-            navigate("/");
+            navigate("/worker");
         },
     });
     function handleAdd({ name, age, team, email, phone, date }) {
@@ -37,27 +38,33 @@ export default function WorkerWrite() {
     return (
         <Container>
             <Wrapper className="h-[calc(100%-50px)]">
-                <Pagename
-                    className="flex justify-between items-center"
-                    name="사원정보 작성"
+                <RHFForm
+                    onSubmit={handleSubmit(handleAdd)}
+                    className="w-full pb-[30px]"
                 >
-                    <div className="flex gap-[10px]">
-                        <Button className="text-[15px]" onClick={goBack}>
-                            돌아가기
-                        </Button>
-                        <Button
-                            className="text-[15px]"
-                            onClick={handleSubmit(handleAdd)}
-                        >
-                            저장
-                        </Button>
-                    </div>
-                </Pagename>
-                <UserForm
-                    register={register}
-                    handleSubmit={handleSubmit}
-                    handleAdd={handleAdd}
-                />
+                    <Pagename
+                        className="flex justify-between items-center"
+                        name="사원정보 작성"
+                    >
+                        <div className="flex gap-[10px]">
+                            <Button className="text-[15px]" onClick={goBack}>
+                                돌아가기
+                            </Button>
+                            <Button
+                                type="submit"
+                                className="text-[15px]"
+                                onClick={handleSubmit(handleAdd)}
+                            >
+                                저장
+                            </Button>
+                        </div>
+                    </Pagename>
+                    <UserForm
+                        register={register}
+                        handleSubmit={handleSubmit}
+                        handleAdd={handleAdd}
+                    />
+                </RHFForm>
             </Wrapper>
         </Container>
     );
