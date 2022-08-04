@@ -1,4 +1,7 @@
 import React from "react";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { delEmp, editEmp, getEmp } from "../../api";
@@ -33,6 +36,7 @@ export default function Index() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries("emp");
+            toast.info("사원정보가 삭제되었습니다.");
         },
     });
 
@@ -41,7 +45,19 @@ export default function Index() {
     }
 
     function handleDel(id) {
-        _delEmp.mutate({ id });
+        Swal.fire({
+            title: "정말로 삭제하시겠습니까?",
+            text: "삭제하면 되돌릴 수 없습니다.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "네",
+            cancelButtonText: "아니요",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                _delEmp.mutate({ id });
+            }
+        });
+        return;
     }
 
     function goWritePage() {
