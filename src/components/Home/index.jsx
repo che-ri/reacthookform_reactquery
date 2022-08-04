@@ -27,6 +27,7 @@ export default function Index() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries("emp");
+            toast.info("사원정보가 삭제되었습니다.");
         },
     });
 
@@ -36,7 +37,7 @@ export default function Index() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries("emp");
-            toast.info("사원정보가 삭제되었습니다.");
+            toast.info("사원정보가 수정되었습니다.");
         },
     });
 
