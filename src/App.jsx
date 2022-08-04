@@ -1,4 +1,7 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 //components
 import SuspenseFallBack from "./shared/SuspenseFallBack";
@@ -15,6 +18,7 @@ export default function App() {
                 <ErrorBoundary>
                     <Layout>
                         <Router />
+                        <ToastContainer />
                     </Layout>
                 </ErrorBoundary>
             </React.Suspense>

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { postEmp } from "../api";
+import { toast } from "react-toastify";
 
 //components
 import RHFForm from "../shared/RHFForm";
@@ -24,6 +25,7 @@ export default function WorkerWrite() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries("emp");
+            toast.info("사원이 추가되었습니다.");
             navigate("/worker");
         },
     });
