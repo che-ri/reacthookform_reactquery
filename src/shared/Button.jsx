@@ -1,7 +1,7 @@
 import React from "react";
 
 const Button = React.forwardRef(
-    ({ onClick, children, style, className }, ref) => {
+    ({ onClick, children, style, className, ...props }, ref) => {
         return (
             <button
                 onClick={onClick}
@@ -11,6 +11,7 @@ const Button = React.forwardRef(
                 }}
                 ref={ref}
                 className={`h-max w-max bg-black text-white py-[5px] px-[10px] rounded flex items-center transition-all hover:bg-blue ${className}`}
+                {...props}
             >
                 {children}
             </button>

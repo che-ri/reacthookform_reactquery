@@ -28,6 +28,9 @@ export default function WorkerWrite() {
             toast.info("사원이 추가되었습니다.");
             navigate("/worker");
         },
+        onError: () => {
+            toast.error("사원이 추가되지 않았습니다!");
+        },
     });
     function handleAdd({ name, age, team, email, phone, date }) {
         _addEmp.mutate({ name, age, team, email, phone, date });
@@ -49,7 +52,11 @@ export default function WorkerWrite() {
                         name="사원정보 작성"
                     >
                         <div className="flex gap-[10px]">
-                            <Button className="text-[15px]" onClick={goBack}>
+                            <Button
+                                type="button"
+                                className="text-[15px]"
+                                onClick={goBack}
+                            >
                                 돌아가기
                             </Button>
                             <Button
